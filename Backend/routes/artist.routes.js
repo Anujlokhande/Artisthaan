@@ -31,4 +31,44 @@ router.post(
 router.get("/logout", auth.authArtist, artistController.logoutArtist);
 router.get("/getArtist", auth.authArtist, artistController.getArtist);
 
+//Listing
+
+router.post(
+  "/create",
+  [
+    body("title")
+      .isString()
+      .isLength({ min: 5 })
+      .withMessage("Email Listing Title"),
+    body("description")
+      .isString()
+      .isLength({ min: 5 })
+      .withMessage("Email Listing Description"),
+    body("image").isString().withMessage("Email Listing Image"),
+  ],
+  auth.authArtist,
+  artistController.createListing
+);
+
+router.put(
+  "/update/:id",
+  [
+    body("title")
+      .isString()
+      .isLength({ min: 5 })
+      .withMessage("Invalid Listing Title"),
+    body("description")
+      .isString()
+      .isLength({ min: 5 })
+      .withMessage("Invalid Listing Description"),
+    body("image").isString().withMessage("Invalid Listing Image"),
+  ],
+  auth.authArtist,
+  artistController.updateListing
+);
+
+router.delete("/delete/:id", auth.authArtist, artistController.deleteListing);
+
+router.get("/show", artistController.showListings);
+
 module.exports = router;

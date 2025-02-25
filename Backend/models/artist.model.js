@@ -46,6 +46,11 @@ const artistSchema = new mongoose.Schema({
     default:
       "https://cdn.vectorstock.com/i/1000v/66/13/default-avatar-profile-icon-social-media-user-vector-49816613.jpg",
   },
+  phone: {
+    type: Number,
+    required: true,
+    unique: true,
+  },
 });
 
 artistSchema.methods.generateAuthToken = function () {
