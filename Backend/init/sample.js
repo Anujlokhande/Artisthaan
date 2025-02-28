@@ -7,24 +7,27 @@ const sampleData = [
     location: "Paris",
     country: "France",
     owner: "67bdaf6aa5b152a0272b979f",
+    typeOfArt: "Photography",
   },
   {
     title: "Taj Mahal Visit",
     description: "Beautiful white marble mausoleum and UNESCO heritage site",
     image:
-      "https://mandalameadow.com/wp-content/uploads/2020/06/Traditional-art-and-crafts-in-India-_-Warli-Art.jpg",
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQj5qTcr5qz24fiwGcQO-bmWNEAhT8bJKLa7w&s",
     location: "Agra",
     country: "India",
     owner: "67bdaf6aa5b152a0272b979f",
+    typeOfArt: "Painting",
   },
   {
     title: "Grand Canyon Adventure",
     description: "Natural wonder with breathtaking views and hiking trails",
     image:
-      "https://mandalameadow.com/wp-content/uploads/2020/06/Traditional-art-and-crafts-in-India-_-Warli-Art.jpg",
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTZTBc67ETZj0UNIfRUjHkMtQtyugTK0eWCuA&s",
     location: "Arizona",
     country: "USA",
     owner: "67bdaf6aa5b152a0272b979f",
+    typeOfArt: "Digital Art",
   },
   {
     title: "Santorini Sunset",
@@ -34,6 +37,7 @@ const sampleData = [
     location: "Santorini",
     country: "Greece",
     owner: "67bdaf6aa5b152a0272b979f",
+    typeOfArt: "Mixed Media",
   },
   {
     title: "Machu Picchu Trek",
@@ -43,6 +47,7 @@ const sampleData = [
     location: "Cusco Region",
     country: "Peru",
     owner: "67bdaf6aa5b152a0272b979f",
+    typeOfArt: "Photography",
   },
   {
     title: "Great Wall Adventure",
@@ -52,6 +57,7 @@ const sampleData = [
     location: "Beijing",
     country: "China",
     owner: "67bdaf6aa5b152a0272b979f",
+    typeOfArt: "Sculpture",
   },
   {
     title: "Safari Experience",
@@ -61,6 +67,7 @@ const sampleData = [
     location: "Serengeti",
     country: "Tanzania",
     owner: "67bdaf6aa5b152a0272b979f",
+    typeOfArt: "Digital Art",
   },
   {
     title: "Venice Gondola Ride",
@@ -70,6 +77,7 @@ const sampleData = [
     location: "Venice",
     country: "Italy",
     owner: "67bdaf6aa5b152a0272b979f",
+    typeOfArt: "Painting",
   },
   {
     title: "Sydney Opera House Tour",
@@ -79,6 +87,7 @@ const sampleData = [
     location: "Sydney",
     country: "Australia",
     owner: "67bdaf6aa5b152a0272b979f",
+    typeOfArt: "Other",
   },
   {
     title: "Northern Lights Watch",
@@ -88,6 +97,7 @@ const sampleData = [
     location: "Reykjavik",
     country: "Iceland",
     owner: "67bdaf6aa5b152a0272b979f",
+    typeOfArt: "Mixed Media",
   },
 ];
 

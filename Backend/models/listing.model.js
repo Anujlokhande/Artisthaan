@@ -15,6 +15,18 @@ const listingSchema = new mongoose.Schema({
     default:
       "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTyrOrNoiR7Hj_ctmI_-a5uShS8470JVJuWXg&s",
   },
+  typeOfArt: {
+    type: String,
+    required: true,
+    enum: [
+      "Painting",
+      "Sculpture",
+      "Photography",
+      "Digital Art",
+      "Mixed Media",
+      "Other",
+    ],
+  },
   location: String,
   country: String,
   owner: {

@@ -10,7 +10,6 @@ router.post(
     body("email").isEmail().isLength({ min: 5 }),
     body("password").isString().isLength({ min: 5 }),
     body("fullname.firstname").isString().isLength({ min: 3 }),
-    body("typeOfArt").isString().notEmpty(),
     body("city").isString().isLength({ min: 2 }),
   ],
   artistController.registerArtist
@@ -45,6 +44,18 @@ router.post(
       .isLength({ min: 5 })
       .withMessage("Email Listing Description"),
     body("image").isString().withMessage("Email Listing Image"),
+    body("type")
+      .isString()
+      .isIn([
+        "Painting",
+        "Sculpture",
+        "Photography",
+        "Digital Art",
+        "Mixed Media",
+        "Other",
+      ])
+      .isLength({ min: 2 })
+      .withMessage("Invalid Art Type"),
   ],
   auth.authArtist,
   artistController.createListing
@@ -69,6 +80,11 @@ router.put(
 
 router.delete("/delete/:id", auth.authArtist, artistController.deleteListing);
 
-router.get("/show", artistController.showListings);
+router.get("/show", artistController.show);
+router.get("/show/:id", artistController.showListing);
+
+//who logged in
+
+router.get("/loggedIn", auth.loggedIn);
 
 module.exports = router;

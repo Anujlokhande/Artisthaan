@@ -26,7 +26,9 @@ const UserLogIn = () => {
       if (responce.status == 200) {
         const data = responce.data;
         setUser(data.user);
+        const expirationTime = new Date().getTime() + 60 * 60 * 1000; // 60 minutes from now
         localStorage.setItem("token", data.token);
+        localStorage.setItem("tokenExpiration", expirationTime.toString());
         navigate("/home");
       }
     } catch (err) {
@@ -60,6 +62,7 @@ const UserLogIn = () => {
               type="text"
               placeholder="Email"
               className="rounded-md border-none h-8 bg-white  placeholder:text-base py-2 px-4 w-full mb-3"
+              required
             />
             <h3 className="text-xl text-[#D4B894] font-medium mb-2">
               Enter Your Password
@@ -72,6 +75,7 @@ const UserLogIn = () => {
               type="password"
               placeholder="Password"
               className="rounded-md border-none h-8 bg-white  placeholder:text-base py-2 px-4 w-full mb-5 "
+              required
             />
 
             <button

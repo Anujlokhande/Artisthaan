@@ -5,7 +5,7 @@ import UserSignUp from "./pages/UserSignUp";
 import UserLogIn from "./pages/UserLogIn";
 import ArtistLogIn from "./pages/ArtistLogIn";
 import ArtistSignUp from "./pages/ArtistSignUp";
-import UserProtectWrapper from "./pages/UserProtectWrapper";
+import ProtectWrapper from "./pages/ProtectWrapper";
 import Main from "./pages/Main";
 
 function App() {
@@ -16,9 +16,9 @@ function App() {
         <Route
           path="/home"
           element={
-            <UserProtectWrapper>
+            <ProtectWrapper>
               <Home />
-            </UserProtectWrapper>
+            </ProtectWrapper>
           }
         />
         <Route path="/login" element={<UserLogIn />} />

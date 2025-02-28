@@ -1,13 +1,37 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import { ArtistDataContext } from "../context/AristContext";
 
 const ArtistLogIn = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
+  const { artist, setArtist } = useContext(ArtistDataContext);
+
   const navigate = useNavigate();
   function submitHandler(e) {
     e.preventDefault();
+    const artist = {
+      email,
+      password,
+    };
+    try {
+      const responce = axios.post(
+        `${import.meta.env.VITE_BASE_URL}/artist/login}`,
+        artist
+      );
+
+      if (responce.status == 200) {
+        const data = responce.data;
+        setArtist(data.artist);
+        const expirationTime = new Date().getTime() + 60 * 60 * 1000; // 60 minutes from now
+        localStorage.setItem("token", data.token);
+        localStorage.setItem("tokenExpiration", expirationTime.toString());
+        navigate("/home");
+      }
+    } catch (err) {
+      console.log(err);
+    }
     setPassword("");
     setEmail("");
   }
@@ -34,6 +58,7 @@ const ArtistLogIn = () => {
               type="text"
               placeholder="Email"
               className="rounded-md border-none h-8 bg-white  placeholder:text-base py-2 px-4 w-full mb-3"
+              required
             />
             <h3 className="text-xl text-[#D4B894] font-medium mb-2">
               Enter Your Password
@@ -46,6 +71,7 @@ const ArtistLogIn = () => {
               type="password"
               placeholder="Password"
               className="rounded-md border-none h-8 bg-white  placeholder:text-base py-2 px-4 w-full mb-5 "
+              required
             />
 
             <Link

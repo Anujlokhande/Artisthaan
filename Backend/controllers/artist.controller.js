@@ -11,8 +11,7 @@ module.exports.registerArtist = async (req, res, next) => {
   }
 
   try {
-    const { email, password, fullname, phone, profilePic, typeOfArt, city } =
-      req.body;
+    const { email, password, fullname, phone, profilePic, city } = req.body;
     const isArtistExists = await artistModel.findOne({ email });
     if (isArtistExists) {
       return res.status(400).json({ message: "Artist Already Exists" });
@@ -26,7 +25,6 @@ module.exports.registerArtist = async (req, res, next) => {
       password: hashPassword,
       phone,
       profilePic: profilePic || undefined,
-      typeOfArt,
       city,
     });
     req.artist = artist;
@@ -98,7 +96,8 @@ module.exports.createListing = async (req, res, next) => {
   }
 
   try {
-    const { title, description, image, location, country, owner } = req.body;
+    const { title, description, image, location, country, typeOfArt } =
+      req.body;
     const listing = await listingService.createListing({
       title,
       description,
@@ -106,6 +105,7 @@ module.exports.createListing = async (req, res, next) => {
       location,
       country,
       owner: req.artist._id,
+      typeOfArt,
     });
 
     listing.owner = req.artist._id;
@@ -181,7 +181,17 @@ module.exports.deleteListing = async (req, res, next) => {
   }
 };
 
-module.exports.showListings = async (req, res, next) => {
+module.exports.show = async (req, res, next) => {
   const allListings = await Listing.find();
   res.status(200).json(allListings);
+};
+
+module.exports.showListing = async (req, res, next) => {
+  try {
+    const listing = await Listing.findById(req.params.id);
+    res.status(200).json(listing);
+  } catch (err) {
+    console.log(err);
+    next(err);
+  }
 };

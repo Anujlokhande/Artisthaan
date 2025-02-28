@@ -1,18 +1,61 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import { ArtistDataContext } from "../context/AristContext";
+import axios from "axios";
 
 const ArtistSignUp = () => {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
-  const [type, setType] = useState("");
+  const [number, setNumber] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [city, setCity] = useState("");
   const navigate = useNavigate();
-  function submitHandler(e) {
+
+  const { artist, setArtist } = useContext(ArtistDataContext);
+
+  async function submitHandler(e) {
     e.preventDefault();
+
+    const newArtist = {
+      fullname: {
+        firstname: firstName,
+        lastname: lastName,
+      },
+      email,
+      password,
+      city,
+      phone: number,
+    };
+
+    console.log(newArtist);
+
+    try {
+      const responce = await axios.post(
+        `${import.meta.env.VITE_BASE_URL}/artist/register`,
+        newArtist
+      );
+      // console.log(responce);
+
+      if (responce.status == 201) {
+        const data = responce.data;
+
+        setArtist(data.artist);
+        const expirationTime = new Date().getTime() + 60 * 60 * 1000; // 60 minutes from now
+        localStorage.setItem("token", data.token);
+        localStorage.setItem("tokenExpiration", expirationTime.toString());
+        navigate("/home");
+      }
+    } catch (err) {
+      console.log(err);
+    }
+
     setPassword("");
     setEmail("");
+    setFirstName("");
+    setLastName("");
+    setNumber("");
+    setCity("");
   }
   return (
     <div className="h-screen w-screen bg-[url(https://c1.wallpaperflare.com/preview/630/630/403/rough-ricardo-l-tamayo-art-local-art.jpg)] bg-cover bg-center flex justify-center items-center ">
@@ -38,6 +81,7 @@ const ArtistSignUp = () => {
                 type="text"
                 placeholder="First Name"
                 className="rounded-md border-none h-8 bg-white  placeholder:text-base py-2 px-4 w-1/2 mb-3"
+                required
               />
               <input
                 value={lastName}
@@ -47,6 +91,7 @@ const ArtistSignUp = () => {
                 type="text"
                 placeholder="Last Name"
                 className="rounded-md border-none h-8 bg-white  placeholder:text-base py-2 px-4 w-1/2 mb-3"
+                required
               />
             </div>
             <h3 className="text-xl text-[#D4B894] font-medium mb-2">
@@ -60,6 +105,7 @@ const ArtistSignUp = () => {
               type="text"
               placeholder="Email"
               className="rounded-md border-none h-8 bg-white  placeholder:text-base py-2 px-4 w-full mb-3"
+              required
             />
             <h3 className="text-xl text-[#D4B894] font-medium mb-2">
               Enter Your Password
@@ -72,19 +118,21 @@ const ArtistSignUp = () => {
               type="password"
               placeholder="Password"
               className="rounded-md border-none h-8 bg-white  placeholder:text-base py-2 px-4 w-full mb-5 "
+              required
             />
 
             <h3 className="text-xl text-[#D4B894] font-medium mb-2">
-              Enter Type Of Art
+              Enter Number
             </h3>
             <input
-              value={type}
-              onChange={(e) => {
-                setType(e.target.value);
-              }}
-              type="text"
-              placeholder="Type Of Art"
+              value={number}
+              onChange={(e) =>
+                setNumber(e.target.value ? Number(e.target.value) : "")
+              }
+              type="number"
+              placeholder="Number"
               className="rounded-md border-none h-8 bg-white  placeholder:text-base py-2 px-4 w-full mb-3"
+              required
             />
 
             <h3 className="text-xl text-[#D4B894] font-medium mb-2">
@@ -98,14 +146,12 @@ const ArtistSignUp = () => {
               type="text"
               placeholder="City"
               className="rounded-md border-none h-8 bg-white  placeholder:text-base py-2 px-4 w-full mb-3"
+              required
             />
 
-            <Link
-              to={"/signup"}
-              className="w-full border-2 border-[#8E7B61] rounded-md text-white  flex justify-center items-center bg-[#A27B4E] py-1.5 px-5 mb-5"
-            >
+            <button className="w-full border-2 border-[#8E7B61] rounded-md text-white  flex justify-center items-center bg-[#A27B4E] py-1.5 px-5 mb-5">
               Sign Up
-            </Link>
+            </button>
             <Link
               to={"/login"}
               className="w-full border-2 border-black rounded-md text-white bg-black py-1.5 px-5 flex justify-center items-center"

@@ -7,6 +7,7 @@ module.exports.createListing = async ({
   location,
   country,
   owner,
+  typeOfArt,
 }) => {
   if (!title || !description || !image || !location || !country || !owner) {
     throw new Error("All fields are required of listing");
@@ -27,6 +28,7 @@ module.exports.createListing = async ({
     location,
     country,
     owner,
+    typeOfArt,
   });
 
   return listing;

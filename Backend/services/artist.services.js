@@ -7,10 +7,9 @@ module.exports.registerArtist = async ({
   password,
   phone,
   profilePic,
-  typeOfArt,
   city,
 }) => {
-  if ((!email || !password || !firstname || !phone, !typeOfArt || !city)) {
+  if (!email || !password || !firstname || !phone || !city) {
     throw new Error("All fields are required");
   }
 
@@ -27,7 +26,6 @@ module.exports.registerArtist = async ({
     password,
     phone,
     profilePic,
-    typeOfArt,
     city,
   });
 

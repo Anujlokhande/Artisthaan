@@ -23,19 +23,6 @@ const artistSchema = new mongoose.Schema({
     required: true,
   },
 
-  typeOfArt: {
-    type: String,
-    required: true,
-    enum: [
-      "Painting",
-      "Sculpture",
-      "Photography",
-      "Digital Art",
-      "Mixed Media",
-      "Other",
-    ],
-  },
-
   city: {
     type: String,
     required: true,
