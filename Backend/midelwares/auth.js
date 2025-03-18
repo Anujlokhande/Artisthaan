@@ -1,5 +1,6 @@
 const userModel = require("../models/user.model");
 const artistModel = require("../models/artist.model");
+const ListingModel = require("../models/listing.model");
 const jwt = require("jsonwebtoken");
 const express = require("express");
 
@@ -26,8 +27,10 @@ module.exports.authUser = async (req, res, next) => {
 
 module.exports.authArtist = async (req, res, next) => {
   const token = req.cookies.token || req.headers.authorization?.split(" ")[1];
+  // console.log(token);
+
   if (!token) {
-    return res.status(401).json({ message: "Unauthorized" });
+    return res.status(401).json({ message: "Token Is Not Available " });
   }
   try {
     const decoded = jwt.verify(token, process.env.JWT_SECRET);
@@ -39,29 +42,48 @@ module.exports.authArtist = async (req, res, next) => {
     next();
   } catch (err) {
     console.log(err);
-    return res.status(401).json({ message: "Unauthorized" });
+    return res.status(401).json({ message: "Unauthorized 1" });
   }
 };
 
-module.exports.loggedIn = async (req, res) => {
+// module.exports.loggedIn = async (req, res) => {
+//   try {
+//     const token = req.cookies.token || req.headers.authorization?.split(" ")[1];
+//     // console.log(token);
+
+//     if (!token) {
+//       return res.status(400).json({ message: "Token Is Not Present" });
+//     }
+//     const decoded = jwt.verify(token, process.env.JWT_SECRET);
+//     const artist = await artistModel.findById(decoded._id);
+//     if (artist) {
+//       return res.status(200).json({ role: "artist", artist });
+//     }
+
+//     const user = await userModel.findById(decoded._id);
+//     if (user) {
+//       return res.status(200).json({ role: "user", user });
+//     }
+//   } catch (err) {
+//     console.log(err);
+//   }
+// };
+
+//checking the owner of art
+
+module.exports.artOwner = async (req, res) => {
   try {
-    const token = req.cookies.token || req.headers.authorization?.split(" ")[1];
-    // console.log(token);
-
-    if (!token) {
-      return res.status(400).json({ message: "Token Is Not Present" });
-    }
-    const decoded = jwt.verify(token, process.env.JWT_SECRET);
-    const artist = await artistModel.findById(decoded._id);
-    if (artist) {
-      return res.status(200).json({ role: "artist", artist });
+    const { id } = req.params;
+    if (!id) {
+      return res.status(400).json({ message: "Id is not Provided" });
     }
 
-    const user = await userModel.findById(decoded._id);
-    if (user) {
-      return res.status(200).json({ role: "user", user });
+    const listing = await ListingModel.findById(id);
+    if (listing.owner.toString() == req.artist._id.toString()) {
+      return res.status(200).json({ message: "Owner Found" });
     }
   } catch (err) {
-    console.log(err);
+    console.error(err);
+    res.status(500).json({ message: "Server error", error: err.message });
   }
 };

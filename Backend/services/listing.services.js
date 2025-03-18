@@ -39,11 +39,11 @@ module.exports.updateListing = async (listingId, updateData) => {
     throw new Error("Listing ID is required");
   }
 
-  const listing = await Listing.findByIdAndUpdate(
-    listingId,
-    { ...updateData },
-    { new: true }
-  );
+  console.log(updateData.listingDetails);
+
+  const listing = await Listing.findByIdAndUpdate(listingId, {
+    ...updateData.listingDetails,
+  });
 
   if (!listing) {
     throw new Error("Listing not found");

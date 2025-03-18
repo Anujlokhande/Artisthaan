@@ -15,6 +15,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 
 const mongoose = require("mongoose");
+
 function main() {
   mongoose
     .connect(process.env.DB_URL)

@@ -27,6 +27,8 @@ const UserProtectWrapper = ({ children }) => {
         .then((responce) => {
           if (responce.status == 200) {
             const data = responce.data;
+            // console.log(responce.data);
+
             if (data.role == "user") {
               setUser(data.user);
             } else {

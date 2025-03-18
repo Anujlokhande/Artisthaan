@@ -3,6 +3,9 @@ const router = express.Router();
 const { body } = require("express-validator");
 const artistController = require("../controllers/artist.controller");
 const auth = require("../midelwares/auth");
+const jwt = require("jsonwebtoken");
+const artistModel = require("../models/artist.model");
+const userModel = require("../models/user.model");
 
 router.post(
   "/register",
@@ -37,23 +40,15 @@ router.post(
   [
     body("title")
       .isString()
-      .isLength({ min: 5 })
+      .isLength({ min: 3 })
       .withMessage("Email Listing Title"),
     body("description")
       .isString()
       .isLength({ min: 5 })
       .withMessage("Email Listing Description"),
     body("image").isString().withMessage("Email Listing Image"),
-    body("type")
+    body("typeOfArt")
       .isString()
-      .isIn([
-        "Painting",
-        "Sculpture",
-        "Photography",
-        "Digital Art",
-        "Mixed Media",
-        "Other",
-      ])
       .isLength({ min: 2 })
       .withMessage("Invalid Art Type"),
   ],
@@ -63,17 +58,17 @@ router.post(
 
 router.put(
   "/update/:id",
-  [
-    body("title")
-      .isString()
-      .isLength({ min: 5 })
-      .withMessage("Invalid Listing Title"),
-    body("description")
-      .isString()
-      .isLength({ min: 5 })
-      .withMessage("Invalid Listing Description"),
-    body("image").isString().withMessage("Invalid Listing Image"),
-  ],
+  // [
+  //   body("title")
+  //     .isString()
+  //     .isLength({ min: 3 })
+  //     .withMessage("Invalid Listing Title"),
+  //   body("description")
+  //     .isString()
+  //     .isLength({ min: 3 })
+  //     .withMessage("Invalid Listing Description"),
+  //   body("image").isString().withMessage("Invalid Listing Image"),
+  // ],
   auth.authArtist,
   artistController.updateListing
 );
@@ -85,6 +80,35 @@ router.get("/show/:id", artistController.showListing);
 
 //who logged in
 
-router.get("/loggedIn", auth.loggedIn);
+router.get("/loggedIn", async (req, res) => {
+  try {
+    const token = req.cookies.token || req.headers.authorization?.split(" ")[1];
+    console.log(token);
+
+    if (!token) {
+      return res.status(400).json({ message: "Token Is Not Present" });
+    }
+
+    const decoded = jwt.verify(token, process.env.JWT_SECRET);
+    console.log(decoded);
+
+    const artist = await artistModel.findById(decoded._id);
+    if (artist) {
+      return res.status(200).json({ role: "artist", artist });
+    }
+
+    const user = await userModel.findById(decoded._id);
+    if (user) {
+      return res.status(200).json({ role: "user", user });
+    }
+
+    return res.status(404).json({ message: "User or Artist not found" });
+  } catch (err) {
+    console.log(err);
+    return res.status(400).json({ message: "err" });
+  }
+});
+
+router.get("/artOwner/:id", auth.authArtist, auth.artOwner);
 
 module.exports = router;

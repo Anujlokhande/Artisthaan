@@ -1,6 +1,10 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
+import { UserDataContext } from "../context/UserContext";
+import { ArtistDataContext } from "../context/AristContext";
+import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
-const NavBar = () => {
+const NavBar = ({ setSelectedCategory }) => {
   const [menuOpen, setMenuOpen] = useState(false);
   const categories = [
     "Painting",
@@ -9,6 +13,56 @@ const NavBar = () => {
     "Digital Art",
     "Mixed Media",
   ];
+
+  const navigate = useNavigate();
+
+  const { user, setUser } = useContext(UserDataContext);
+  const { artist, setArtist } = useContext(ArtistDataContext);
+
+  async function logOut() {
+    try {
+      const token = localStorage.getItem("token");
+      if (!token) {
+        console.log("token is not present");
+      }
+      if (user) {
+        const responce = await axios.get(
+          `${import.meta.env.VITE_BASE_URL}/user/logout`,
+          {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          }
+        );
+
+        if (responce.status == 200) {
+          const data = responce.data;
+          console.log(data);
+          setUser(null);
+          navigate("/");
+        }
+      } else {
+        const responce = await axios.get(
+          `${import.meta.env.VITE_BASE_URL}/artist/logout`,
+          {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          }
+        );
+
+        if (responce.status == 200) {
+          const data = responce.data;
+          console.log(data);
+          setArtist(null);
+          navigate("/");
+        }
+      }
+    } catch (err) {
+      console.log(err);
+    }
+  }
+
   return (
     <div className="flex items-center justify-between p-4 shadow-md bg-[#F4F4F2] relative w-full">
       {/* Logo */}
@@ -16,12 +70,12 @@ const NavBar = () => {
         <span className="ml-4 text-3xl">artisthaan</span>
       </div>
 
-      {/* categories */}
       <div className="flex items-center gap-4 overflow-x-auto px-4 ">
         {categories.map((category) => (
           <button
             key={category}
             className="text-gray-700 hover:text-[#E60023] font-medium px-4 py-2 cursor-pointer"
+            onClick={() => setSelectedCategory(category)}
           >
             {category}
           </button>
@@ -30,8 +84,14 @@ const NavBar = () => {
 
       {/* User Menu */}
       <div className="flex items-center gap-4 relative">
-        <span className="text-gray-700 flex items-center gap-1">
-          <i className="ri-home-line  text-2xl cursor-pointer font-semibold opacity-100"></i>
+        <span
+          className="text-gray-700 flex items-center gap-1 cursor-pointer"
+          onClick={() => {
+            setSelectedCategory(null);
+            navigate("/home");
+          }}
+        >
+          <i className="ri-home-line  text-2xl  font-semibold opacity-100"></i>
           Home
         </span>
         <div
@@ -45,22 +105,37 @@ const NavBar = () => {
         {/* Dropdown Menu */}
         {menuOpen && (
           <div className="absolute right-0 top-12 bg-white shadow-md rounded-lg w-48 py-2">
-            <button className="block w-full text-left px-4 py-2 hover:bg-gray-100 font-semibold">
-              Sign up
-            </button>
-            <button className="block w-full text-left px-4 py-2 hover:bg-gray-100">
-              Log in
+            <button
+              className="block w-full text-left px-4 py-2 hover:bg-gray-100 font-semibold"
+              onClick={logOut}
+            >
+              Log out
             </button>
             <hr />
-            <button className="block w-full text-left px-4 py-2 hover:bg-gray-100">
-              Airbnb your home
-            </button>
-            <button className="block w-full text-left px-4 py-2 hover:bg-gray-100">
-              About Us
-            </button>
-            <button className="block w-full text-left px-4 py-2 hover:bg-gray-100">
-              Help Centre
-            </button>
+            <div
+              className={` px-4 py-2 hover:bg-gray-100 gap-2 ${
+                user ? "hidden" : "flex justify-center items-center"
+              }`}
+            >
+              <i className="ri-add-box-line text-xl"></i>
+              <button
+                className={`w-full text-left ${user ? "hidden" : "block"}`}
+                onClick={() => {
+                  navigate("/art-submission");
+                }}
+              >
+                Create
+              </button>
+            </div>
+            <div className="flex justify-center items-center px-4 py-2 hover:bg-gray-100 gap-2">
+              <i className="ri-information-line text-xl"></i>
+              <button className={`w-full text-left block`}>About Us</button>
+            </div>
+
+            <div className="flex justify-center items-center px-4 py-2 hover:bg-gray-100 gap-2">
+              <i className="ri-customer-service-line text-xl"></i>
+              <button className={`w-full text-left block`}>Help Centre</button>
+            </div>
           </div>
         )}
       </div>

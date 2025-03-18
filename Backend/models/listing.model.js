@@ -31,7 +31,7 @@ const listingSchema = new mongoose.Schema({
   country: String,
   owner: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: "artist",
+    ref: "Artist",
   },
 });
 

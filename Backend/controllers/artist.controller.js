@@ -125,11 +125,6 @@ module.exports.updateListing = async (req, res, next) => {
       .json({ message: "Unauthorized. Please login first." });
   }
 
-  const error = validationResult(req);
-  if (!error.isEmpty()) {
-    return res.status(400).json({ error: error.array() });
-  }
-
   try {
     const { id } = req.params;
     const listing = await Listing.findById(id);
@@ -145,6 +140,8 @@ module.exports.updateListing = async (req, res, next) => {
     }
 
     const updates = req.body;
+    // console.log(updates);
+
     const updatedListing = await listingService.updateListing(id, updates);
 
     res.status(200).json({ listing: updatedListing });
@@ -188,7 +185,7 @@ module.exports.show = async (req, res, next) => {
 
 module.exports.showListing = async (req, res, next) => {
   try {
-    const listing = await Listing.findById(req.params.id);
+    const listing = await Listing.findById(req.params.id).populate("owner");
     res.status(200).json(listing);
   } catch (err) {
     console.log(err);

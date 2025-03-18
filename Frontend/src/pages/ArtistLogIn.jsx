@@ -1,6 +1,7 @@
 import React, { useContext, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { ArtistDataContext } from "../context/AristContext";
+import axios from "axios";
 
 const ArtistLogIn = () => {
   const [email, setEmail] = useState("");
@@ -9,24 +10,22 @@ const ArtistLogIn = () => {
   const { artist, setArtist } = useContext(ArtistDataContext);
 
   const navigate = useNavigate();
-  function submitHandler(e) {
+  async function submitHandler(e) {
     e.preventDefault();
     const artist = {
       email,
       password,
     };
     try {
-      const responce = axios.post(
-        `${import.meta.env.VITE_BASE_URL}/artist/login}`,
+      const responce = await axios.post(
+        `${import.meta.env.VITE_BASE_URL}/artist/login`,
         artist
       );
 
       if (responce.status == 200) {
         const data = responce.data;
         setArtist(data.artist);
-        const expirationTime = new Date().getTime() + 60 * 60 * 1000; // 60 minutes from now
         localStorage.setItem("token", data.token);
-        localStorage.setItem("tokenExpiration", expirationTime.toString());
         navigate("/home");
       }
     } catch (err) {
@@ -36,7 +35,7 @@ const ArtistLogIn = () => {
     setEmail("");
   }
   return (
-    <div className="h-screen w-screen bg-[url(https://c1.wallpaperflare.com/preview/630/630/403/rough-ricardo-l-tamayo-art-local-art.jpg)] bg-cover bg-center flex justify-center items-center ">
+    <div className="h-screen w-screen bg-[url(https://images.unsplash.com/photo-1631446415295-6fb14a3e9c4c?q=80&w=2071&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fA%3D%3D)] bg-cover bg-center flex justify-center items-center ">
       <div className="backdrop-blur-xl  w-1/3 h-2/3 flex flex-col items-center justify-evenly border-none rounded-2xl">
         {/*bg-[#604E2F]*/}
         <h1 className="text-4xl font-semibold">LOG IN</h1>
@@ -74,12 +73,9 @@ const ArtistLogIn = () => {
               required
             />
 
-            <Link
-              to={"/home"}
-              className="w-full border-2 border-[#8E7B61] rounded-md text-white  flex justify-center items-center bg-[#A27B4E] py-1.5 px-5 mb-5"
-            >
+            <button className="w-full border-2 border-[#8E7B61] rounded-md text-white  flex justify-center items-center bg-[#A27B4E] py-1.5 px-5 mb-5">
               Log In
-            </Link>
+            </button>
             <Link
               to={"/login"}
               className="w-full border-2 border-black rounded-md text-white bg-black py-1.5 px-5 flex justify-center items-center"

@@ -26,9 +26,7 @@ const UserLogIn = () => {
       if (responce.status == 200) {
         const data = responce.data;
         setUser(data.user);
-        const expirationTime = new Date().getTime() + 60 * 60 * 1000; // 60 minutes from now
         localStorage.setItem("token", data.token);
-        localStorage.setItem("tokenExpiration", expirationTime.toString());
         navigate("/home");
       }
     } catch (err) {
@@ -40,7 +38,7 @@ const UserLogIn = () => {
   }
 
   return (
-    <div className="h-screen w-screen bg-[url(https://c1.wallpaperflare.com/preview/630/630/403/rough-ricardo-l-tamayo-art-local-art.jpg)] bg-cover bg-center flex justify-center items-center ">
+    <div className="h-screen w-screen bg-[url(https://images.unsplash.com/photo-1631446415295-6fb14a3e9c4c?q=80&w=2071&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fA%3D%3D)] bg-cover bg-center flex justify-center items-center ">
       <div className="backdrop-blur-xl  w-1/3 h-2/3 flex flex-col items-center justify-evenly border-none rounded-2xl">
         {/*bg-[#604E2F]*/}
         <h1 className="text-4xl font-semibold">LOG IN</h1>
