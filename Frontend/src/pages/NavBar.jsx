@@ -127,6 +127,36 @@ const NavBar = ({ setSelectedCategory }) => {
                 Create
               </button>
             </div>
+            <div
+              className={` px-4 py-2 hover:bg-gray-100 gap-2 ${
+                user ? "hidden" : "flex justify-center items-center"
+              }`}
+            >
+              <i className="ri-brush-ai-line text-xl"></i>
+              <button
+                className={`w-full text-left ${user ? "hidden" : "block"}`}
+                onClick={() => {
+                  navigate("/artist-art");
+                }}
+              >
+                Arts
+              </button>
+            </div>
+            <div
+              className={` px-4 py-2 hover:bg-gray-100 gap-2 ${
+                user ? "flex justify-center items-center" : "hidden"
+              }`}
+            >
+              <i className="ri-brush-ai-line text-xl"></i>
+              <button
+                className={`w-full text-left ${user ? "block" : "hidden"}`}
+                onClick={() => {
+                  navigate("/saved");
+                }}
+              >
+                Saved
+              </button>
+            </div>
             <div className="flex justify-center items-center px-4 py-2 hover:bg-gray-100 gap-2">
               <i className="ri-information-line text-xl"></i>
               <button className={`w-full text-left block`}>About Us</button>
@@ -142,12 +172,5 @@ const NavBar = ({ setSelectedCategory }) => {
     </div>
   );
 };
-
-{
-  /* <i className="ri-home-line  text-2xl cursor-pointer font-semibold opacity-100"></i>
-          <i className="ri-compass-line text-2xl cursor-pointer  font-semibold opacity-100"></i>
-          <i className="ri-message-3-line text-2xl cursor-pointer  font-semibold opacity-100"></i>
-          <i className="ri-notification-4-line text-2xl cursor-pointer  font-semibold opacity-100"></i> */
-}
 
 export default NavBar;

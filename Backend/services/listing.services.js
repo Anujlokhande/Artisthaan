@@ -8,18 +8,11 @@ module.exports.createListing = async ({
   country,
   owner,
   typeOfArt,
+  price,
 }) => {
   if (!title || !description || !image || !location || !country || !owner) {
     throw new Error("All fields are required of listing");
   }
-
-  // const listing = await Listing.create({
-  //   title,
-  //   description,
-  //   image,
-  //   location,
-  //   country,
-  // });
 
   const listing = await Listing.create({
     title,
@@ -29,6 +22,7 @@ module.exports.createListing = async ({
     country,
     owner,
     typeOfArt,
+    price,
   });
 
   return listing;

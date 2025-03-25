@@ -51,6 +51,7 @@ router.post(
       .isString()
       .isLength({ min: 2 })
       .withMessage("Invalid Art Type"),
+    body("price").isString().withMessage("Price Is Invalid"),
   ],
   auth.authArtist,
   artistController.createListing
@@ -92,7 +93,7 @@ router.get("/loggedIn", async (req, res) => {
     const decoded = jwt.verify(token, process.env.JWT_SECRET);
     console.log(decoded);
 
-    const artist = await artistModel.findById(decoded._id);
+    const artist = await artistModel.findById(decoded._id).populate("arts");
     if (artist) {
       return res.status(200).json({ role: "artist", artist });
     }
@@ -109,6 +110,6 @@ router.get("/loggedIn", async (req, res) => {
   }
 });
 
-router.get("/artOwner/:id", auth.authArtist, auth.artOwner);
+router.get("/artOwner/:id", auth.artOwner);
 
 module.exports = router;

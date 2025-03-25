@@ -10,6 +10,7 @@ const ArtSubmissionForm = () => {
     typeOfArt: "",
     location: "",
     country: "",
+    price: "",
   });
 
   const navigate = useNavigate();
@@ -148,38 +149,58 @@ const ArtSubmissionForm = () => {
 
         <div>
           <label
-            htmlFor="location"
+            htmlFor="price"
             className="block text-sm font-medium text-gray-700 mb-1"
           >
-            Location
+            Price
           </label>
           <input
             type="text"
-            id="location"
-            name="location"
-            value={formData.location}
-            onChange={handleChange}
-            placeholder="Enter artwork location"
-            className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
-          />
-        </div>
-
-        <div>
-          <label
-            htmlFor="country"
-            className="block text-sm font-medium text-gray-700 mb-1"
-          >
-            Country
-          </label>
-          <input
-            type="text"
-            id="country"
-            name="country"
-            value={formData.country}
+            id="price"
+            name="price"
+            value={formData.price}
             onChange={handleChange}
             placeholder="Enter country"
             className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
           />
+        </div>
+
+        <div className="flex  justify-center items-center gap-2">
+          <div>
+            <label
+              htmlFor="location"
+              className="block text-sm font-medium text-gray-700 mb-1"
+            >
+              Location
+            </label>
+            <input
+              type="text"
+              id="location"
+              name="location"
+              value={formData.location}
+              onChange={handleChange}
+              placeholder="Enter artwork location"
+              className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+            />
+          </div>
+
+          <div>
+            <label
+              htmlFor="country"
+              className="block text-sm font-medium text-gray-700 mb-1"
+            >
+              Country
+            </label>
+            <input
+              type="text"
+              id="country"
+              name="country"
+              value={formData.country}
+              onChange={handleChange}
+              placeholder="Enter country"
+              className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+            />
+          </div>
         </div>
 
         <button

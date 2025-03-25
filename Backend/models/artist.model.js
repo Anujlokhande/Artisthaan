@@ -38,6 +38,13 @@ const artistSchema = new mongoose.Schema({
     required: true,
     unique: true,
   },
+
+  arts: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Listing",
+    },
+  ],
 });
 
 artistSchema.methods.generateAuthToken = function () {

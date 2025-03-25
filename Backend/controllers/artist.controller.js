@@ -45,7 +45,10 @@ module.exports.loginArtist = async (req, res, next) => {
 
   const { email, password } = req.body;
   try {
-    const artist = await artistModel.findOne({ email }).select("+password");
+    const artist = await artistModel
+      .findOne({ email })
+      .select("+password")
+      .populate("arts");
     if (!artist) {
       return res
         .status(400)
@@ -61,6 +64,7 @@ module.exports.loginArtist = async (req, res, next) => {
 
     const token = artist.generateAuthToken();
     req.artist = artist;
+
     res.cookie("token", token);
     res.status(200).json({ artist, token });
   } catch (err) {
@@ -96,7 +100,7 @@ module.exports.createListing = async (req, res, next) => {
   }
 
   try {
-    const { title, description, image, location, country, typeOfArt } =
+    const { title, description, image, location, country, typeOfArt, price } =
       req.body;
     const listing = await listingService.createListing({
       title,
@@ -106,11 +110,14 @@ module.exports.createListing = async (req, res, next) => {
       country,
       owner: req.artist._id,
       typeOfArt,
+      price,
     });
 
     listing.owner = req.artist._id;
 
-    console.log(listing, req.artist);
+    // req.artist.arts = listing._id;
+    req.artist.arts.push(listing._id);
+    await req.artist.save();
     res.status(200).json({ listing });
   } catch (err) {
     console.log(err);
@@ -159,8 +166,6 @@ module.exports.deleteListing = async (req, res, next) => {
   }
 
   const { id } = req.params;
-  console.log(id);
-
   try {
     const listing = await Listing.findById(id);
 
@@ -185,7 +190,16 @@ module.exports.show = async (req, res, next) => {
 
 module.exports.showListing = async (req, res, next) => {
   try {
-    const listing = await Listing.findById(req.params.id).populate("owner");
+    const listing = await Listing.findById(req.params.id)
+      .populate("owner")
+      .populate("comments")
+      .populate({
+        path: "comments",
+        populate: {
+          path: "owner",
+        },
+      });
+
     res.status(200).json(listing);
   } catch (err) {
     console.log(err);

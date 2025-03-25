@@ -29,6 +29,13 @@ const userSchema = new mongoose.Schema({
     select: false,
     min: 5,
   },
+
+  saved: [
+    {
+      type: mongoose.Types.ObjectId,
+      ref: "Listing",
+    },
+  ],
 });
 
 userSchema.methods.generateAuthToken = function () {

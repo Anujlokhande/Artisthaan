@@ -8,6 +8,7 @@ const sampleData = [
     country: "France",
     owner: "67bdaf6aa5b152a0272b979f",
     typeOfArt: "Photography",
+    price: "299.99",
   },
   {
     title: "Taj Mahal Visit",
@@ -18,6 +19,7 @@ const sampleData = [
     country: "India",
     owner: "67bdaf6aa5b152a0272b979f",
     typeOfArt: "Painting",
+    price: "299.99",
   },
   {
     title: "Grand Canyon Adventure",
@@ -28,6 +30,7 @@ const sampleData = [
     country: "USA",
     owner: "67bdaf6aa5b152a0272b979f",
     typeOfArt: "Digital Art",
+    price: "299.99",
   },
   {
     title: "Santorini Sunset",
@@ -38,6 +41,7 @@ const sampleData = [
     country: "Greece",
     owner: "67bdaf6aa5b152a0272b979f",
     typeOfArt: "Mixed Media",
+    price: "299.99",
   },
   {
     title: "Machu Picchu Trek",
@@ -48,6 +52,7 @@ const sampleData = [
     country: "Peru",
     owner: "67bdaf6aa5b152a0272b979f",
     typeOfArt: "Photography",
+    price: "299.99",
   },
   {
     title: "Great Wall Adventure",
@@ -58,6 +63,7 @@ const sampleData = [
     country: "China",
     owner: "67bdaf6aa5b152a0272b979f",
     typeOfArt: "Sculpture",
+    price: "299.99",
   },
   {
     title: "Safari Experience",
@@ -68,6 +74,7 @@ const sampleData = [
     country: "Tanzania",
     owner: "67bdaf6aa5b152a0272b979f",
     typeOfArt: "Digital Art",
+    price: "299.99",
   },
   {
     title: "Venice Gondola Ride",
@@ -78,6 +85,7 @@ const sampleData = [
     country: "Italy",
     owner: "67bdaf6aa5b152a0272b979f",
     typeOfArt: "Painting",
+    price: "299.99",
   },
   {
     title: "Sydney Opera House Tour",
@@ -88,6 +96,7 @@ const sampleData = [
     country: "Australia",
     owner: "67bdaf6aa5b152a0272b979f",
     typeOfArt: "Other",
+    price: "299.99",
   },
   {
     title: "Northern Lights Watch",
@@ -98,6 +107,7 @@ const sampleData = [
     country: "Iceland",
     owner: "67bdaf6aa5b152a0272b979f",
     typeOfArt: "Mixed Media",
+    price: "299.99",
   },
   {
     title: "Eiffel Tower Experience",
@@ -108,6 +118,7 @@ const sampleData = [
     country: "France",
     owner: "67bdaf6aa5b152a0272b979f",
     typeOfArt: "Photography",
+    price: "299.99",
   },
   {
     title: "Taj Mahal Visit",
@@ -118,6 +129,7 @@ const sampleData = [
     country: "India",
     owner: "67bdaf6aa5b152a0272b979f",
     typeOfArt: "Painting",
+    price: "299.99",
   },
   {
     title: "Grand Canyon Adventure",
@@ -128,6 +140,7 @@ const sampleData = [
     country: "USA",
     owner: "67bdaf6aa5b152a0272b979f",
     typeOfArt: "Digital Art",
+    price: "299.99",
   },
   {
     title: "Santorini Sunset",
@@ -138,6 +151,7 @@ const sampleData = [
     country: "Greece",
     owner: "67bdaf6aa5b152a0272b979f",
     typeOfArt: "Mixed Media",
+    price: "299.99",
   },
   {
     title: "Machu Picchu Trek",
@@ -148,6 +162,7 @@ const sampleData = [
     country: "Peru",
     owner: "67bdaf6aa5b152a0272b979f",
     typeOfArt: "Photography",
+    price: "299.99",
   },
   {
     title: "Great Wall Adventure",
@@ -158,6 +173,7 @@ const sampleData = [
     country: "China",
     owner: "67bdaf6aa5b152a0272b979f",
     typeOfArt: "Sculpture",
+    price: "299.99",
   },
   {
     title: "Safari Experience",
@@ -168,6 +184,7 @@ const sampleData = [
     country: "Tanzania",
     owner: "67bdaf6aa5b152a0272b979f",
     typeOfArt: "Digital Art",
+    price: "299.99",
   },
   {
     title: "Venice Gondola Ride",
@@ -178,6 +195,7 @@ const sampleData = [
     country: "Italy",
     owner: "67bdaf6aa5b152a0272b979f",
     typeOfArt: "Painting",
+    price: "299.99",
   },
   {
     title: "Sydney Opera House Tour",
@@ -188,6 +206,7 @@ const sampleData = [
     country: "Australia",
     owner: "67bdaf6aa5b152a0272b979f",
     typeOfArt: "Other",
+    price: "299.99",
   },
   {
     title: "Northern Lights Watch",
@@ -198,7 +217,9 @@ const sampleData = [
     country: "Iceland",
     owner: "67bdaf6aa5b152a0272b979f",
     typeOfArt: "Mixed Media",
+    price: "299.99",
   },
+
   {
     title: "Eiffel Tower Experience",
     description: "Iconic iron lattice tower with stunning city views",
@@ -208,6 +229,7 @@ const sampleData = [
     country: "France",
     owner: "67bdaf6aa5b152a0272b979f",
     typeOfArt: "Photography",
+    price: "299.99",
   },
   {
     title: "Taj Mahal Visit",
@@ -218,6 +240,7 @@ const sampleData = [
     country: "India",
     owner: "67bdaf6aa5b152a0272b979f",
     typeOfArt: "Painting",
+    price: "299.99",
   },
   {
     title: "Grand Canyon Adventure",
@@ -228,6 +251,7 @@ const sampleData = [
     country: "USA",
     owner: "67bdaf6aa5b152a0272b979f",
     typeOfArt: "Digital Art",
+    price: "299.99",
   },
   {
     title: "Santorini Sunset",
@@ -238,6 +262,7 @@ const sampleData = [
     country: "Greece",
     owner: "67bdaf6aa5b152a0272b979f",
     typeOfArt: "Mixed Media",
+    price: "299.99",
   },
   {
     title: "Machu Picchu Trek",
@@ -248,6 +273,7 @@ const sampleData = [
     country: "Peru",
     owner: "67bdaf6aa5b152a0272b979f",
     typeOfArt: "Photography",
+    price: "299.99",
   },
   {
     title: "Great Wall Adventure",
@@ -258,6 +284,7 @@ const sampleData = [
     country: "China",
     owner: "67bdaf6aa5b152a0272b979f",
     typeOfArt: "Sculpture",
+    price: "299.99",
   },
   {
     title: "Safari Experience",
@@ -268,6 +295,7 @@ const sampleData = [
     country: "Tanzania",
     owner: "67bdaf6aa5b152a0272b979f",
     typeOfArt: "Digital Art",
+    price: "299.99",
   },
   {
     title: "Venice Gondola Ride",
@@ -278,6 +306,7 @@ const sampleData = [
     country: "Italy",
     owner: "67bdaf6aa5b152a0272b979f",
     typeOfArt: "Painting",
+    price: "299.99",
   },
   {
     title: "Sydney Opera House Tour",
@@ -288,6 +317,7 @@ const sampleData = [
     country: "Australia",
     owner: "67bdaf6aa5b152a0272b979f",
     typeOfArt: "Other",
+    price: "299.99",
   },
   {
     title: "Northern Lights Watch",
@@ -298,6 +328,7 @@ const sampleData = [
     country: "Iceland",
     owner: "67bdaf6aa5b152a0272b979f",
     typeOfArt: "Mixed Media",
+    price: "299.99",
   },
 ];
 

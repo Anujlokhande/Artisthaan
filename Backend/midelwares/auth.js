@@ -6,7 +6,7 @@ const express = require("express");
 
 module.exports.authUser = async (req, res, next) => {
   const token = req.cookies.token || req.headers.authorization?.split(" ")[1];
-  // console.log(token);
+  console.log(token);
 
   if (!token) {
     return res.status(401).json({ message: "Unauthorized 1" });
@@ -19,6 +19,7 @@ module.exports.authUser = async (req, res, next) => {
       return res.status(404).json({ message: "User not found" });
     }
     req.user = user;
+
     next();
   } catch (err) {
     return res.status(401).json({ message: "Unauthorized" });
@@ -34,11 +35,12 @@ module.exports.authArtist = async (req, res, next) => {
   }
   try {
     const decoded = jwt.verify(token, process.env.JWT_SECRET);
-    const artist = await artistModel.findById(decoded._id);
+    const artist = await artistModel.findById(decoded._id).populate("arts");
     if (!artist) {
       return res.status(404).json({ message: "Artist not found" });
     }
     req.artist = artist;
+
     next();
   } catch (err) {
     console.log(err);
@@ -79,11 +81,16 @@ module.exports.artOwner = async (req, res) => {
     }
 
     const listing = await ListingModel.findById(id);
-    if (listing.owner.toString() == req.artist._id.toString()) {
+    if (!listing) {
+      return res.status(404).json({ message: "Listing not found" });
+    }
+
+    if (listing.owner.toString() === req.artist._id.toString()) {
       return res.status(200).json({ message: "Owner Found" });
     }
+    return res.status(403).json({ message: "Not authorized" });
   } catch (err) {
     console.error(err);
-    res.status(500).json({ message: "Server error", error: err.message });
+    return res.status(500).json({ message: "Server error" });
   }
 };

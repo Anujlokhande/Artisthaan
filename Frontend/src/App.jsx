@@ -11,6 +11,8 @@ import ArtListing from "./pages/ArtListing";
 import LandingPage from "./pages/LandingPage";
 import ArtSubmissionForm from "./pages/ArtSubmissionForm";
 import ArtEditForm from "./pages/ArtEditForm";
+import Artistarts from "./pages/Artistarts";
+import Saved from "./pages/Saved";
 
 function App() {
   return (
@@ -33,6 +35,8 @@ function App() {
         <Route path="/artist-details" element={<ArtistProfile />} />
         <Route path="/art-submission" element={<ArtSubmissionForm />} />
         <Route path="/art-edit" element={<ArtEditForm />} />
+        <Route path="/artist-art" element={<Artistarts />} />
+        <Route path="/saved" element={<Saved />} />
       </Routes>
     </div>
   );

@@ -27,12 +27,23 @@ const listingSchema = new mongoose.Schema({
       "Other",
     ],
   },
+  price: {
+    type: String,
+    required: true,
+  },
   location: String,
   country: String,
   owner: {
     type: mongoose.Schema.Types.ObjectId,
     ref: "Artist",
   },
+
+  comments: [
+    {
+      type: mongoose.Types.ObjectId,
+      ref: "comments",
+    },
+  ],
 });
 
 const Listing = mongoose.model("Listing", listingSchema);

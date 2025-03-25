@@ -70,3 +70,31 @@ module.exports.logoutUser = async (req, res, next) => {
 module.exports.getUser = async (req, res, next) => {
   res.status(200).json(req.user);
 };
+
+module.exports.saveArt = async (req, res) => {
+  try {
+    const { listingId } = req.params;
+    const userId = req.user._id;
+    const newUser = await userService.saveArt({ listingId, userId });
+    res.status(200).json(newUser);
+  } catch (error) {
+    console.log(error);
+    res.status(400).json({ error: error.message });
+  }
+};
+
+module.exports.isSaved = async (req, res) => {
+  try {
+    const { listingId } = req.params;
+    const userId = req.user._id;
+    const saved = await userService.isSaved({ listingId, userId });
+    if (saved) {
+      return true;
+    } else {
+      return false;
+    }
+  } catch (error) {
+    console.log(error);
+    res.status(400).json({ error: error.message });
+  }
+};

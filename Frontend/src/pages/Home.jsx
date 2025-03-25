@@ -4,11 +4,13 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import ArtListing from "./ArtListing";
 import { ListingDataContext } from "../context/ListingContext";
+import { ArtistDataContext } from "../context/AristContext";
 
 const Home = () => {
   const [listing, setListing] = useState([]);
   const { listingDetails, setListingDetails } = useContext(ListingDataContext);
   const [selectedCategory, setSelectedCategory] = useState("");
+  const { artist } = useContext(ArtistDataContext);
 
   const navigate = useNavigate();
 
@@ -18,7 +20,6 @@ const Home = () => {
         `${import.meta.env.VITE_BASE_URL}/artist/show/${id}`
       );
       if (responce.status == 200) {
-        // console.log(responce.data);
         setListingDetails(responce.data);
         navigate("/art-details");
       }
@@ -32,19 +33,6 @@ const Home = () => {
       try {
         const response = await axios.get("http://localhost:8080/artist/show");
 
-        setListing(response.data);
-      } catch (error) {
-        console.error("Error fetching artists:", error);
-      }
-    };
-
-    fetchListings();
-  }, []);
-
-  useEffect(() => {
-    const fetchListings = async () => {
-      try {
-        const response = await axios.get("http://localhost:8080/artist/show");
         setListing(response.data);
       } catch (error) {
         console.error("Error fetching artists:", error);

@@ -38,7 +38,7 @@ const ArtistLogIn = () => {
     <div className="h-screen w-screen bg-[url(https://images.unsplash.com/photo-1631446415295-6fb14a3e9c4c?q=80&w=2071&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fA%3D%3D)] bg-cover bg-center flex justify-center items-center ">
       <div className="backdrop-blur-xl  w-1/3 h-2/3 flex flex-col items-center justify-evenly border-none rounded-2xl">
         {/*bg-[#604E2F]*/}
-        <h1 className="text-4xl font-semibold">LOG IN</h1>
+        <h1 className="text-4xl font-semibold">LOG IN AS ARTIST</h1>
         <div className="w-2/3">
           <form
             onSubmit={(e) => {
