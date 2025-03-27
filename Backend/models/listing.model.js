@@ -19,9 +19,9 @@ const listingSchema = new mongoose.Schema({
     type: String,
     required: true,
     enum: [
-      "Painting",
-      "Sculpture",
-      "Photography",
+      "Chittara art",
+      "Madhubani painting",
+      "Warli painting",
       "Digital Art",
       "Mixed Media",
       "Other",

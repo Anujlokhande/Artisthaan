@@ -10,6 +10,9 @@ const Saved = () => {
   const { setListingDetails } = useContext(ListingDataContext);
   const { user } = useContext(UserDataContext);
   const navigate = useNavigate();
+
+  console.log(user);
+
   const getDetail = async (id) => {
     try {
       const responce = await axios.get(

@@ -27,7 +27,7 @@ const ArtistProfile = () => {
 
         <div className="text-center mt-4 text-gray-800">
           <h2 className="text-xl font-semibold">
-            {artist.fullname.firstname + " " + artist.fullname.lastname}
+            {artist.fullname?.firstname + " " + artist.fullname.lastname}
           </h2>
           <p className="text-sm text-gray-600">{artist.typeOfArt}</p>
         </div>

@@ -106,7 +106,7 @@ const ArtistSignUp = () => {
               required
             />
             <h3 className="text-xl text-[#D4B894] font-medium mb-2">
-              Enter Your Password
+              Create Your Password
             </h3>
             <input
               value={password}

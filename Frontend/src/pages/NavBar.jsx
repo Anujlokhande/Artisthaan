@@ -7,9 +7,9 @@ import axios from "axios";
 const NavBar = ({ setSelectedCategory }) => {
   const [menuOpen, setMenuOpen] = useState(false);
   const categories = [
-    "Painting",
-    "Sculpture",
-    "Photography",
+    "Chittara art",
+    "Madhubani painting",
+    "Warli painting",
     "Digital Art",
     "Mixed Media",
   ];
@@ -67,7 +67,7 @@ const NavBar = ({ setSelectedCategory }) => {
     <div className="flex items-center justify-between p-4 shadow-md bg-[#F4F4F2] relative w-full">
       {/* Logo */}
       <div className="text-2xl font-bold text-[#E60023] flex items-center">
-        <span className="ml-4 text-3xl">artisthaan</span>
+        <span className="ml-4 text-3xl">artistambh</span>
       </div>
 
       <div className="flex items-center gap-4 overflow-x-auto px-4 ">
