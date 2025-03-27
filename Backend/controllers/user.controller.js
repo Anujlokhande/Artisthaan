@@ -89,9 +89,9 @@ module.exports.isSaved = async (req, res) => {
     const userId = req.user._id;
     const saved = await userService.isSaved({ listingId, userId });
     if (saved) {
-      return true;
+      return res.status(200).json({ saved: true });
     } else {
-      return false;
+      return res.status(200).json({ saved: false });
     }
   } catch (error) {
     console.log(error);

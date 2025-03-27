@@ -84,14 +84,12 @@ router.get("/show/:id", artistController.showListing);
 router.get("/loggedIn", async (req, res) => {
   try {
     const token = req.cookies.token || req.headers.authorization?.split(" ")[1];
-    console.log(token);
 
     if (!token) {
       return res.status(400).json({ message: "Token Is Not Present" });
     }
 
     const decoded = jwt.verify(token, process.env.JWT_SECRET);
-    console.log(decoded);
 
     const artist = await artistModel.findById(decoded._id).populate("arts");
     if (artist) {

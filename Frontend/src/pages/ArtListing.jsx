@@ -19,7 +19,7 @@ const ArtListing = () => {
       const token = localStorage.getItem("token");
 
       try {
-        const response = await axios.post(
+        const response = await axios.get(
           `${import.meta.env.VITE_BASE_URL}/artist/artOwner/${
             listingDetails._id
           }`,
@@ -37,7 +37,7 @@ const ArtListing = () => {
           setAuthorized(false);
         }
       } catch (err) {
-        // console.error(err);
+        console.error(err);
       }
     }
     checkOwner();
@@ -54,7 +54,7 @@ const ArtListing = () => {
             },
           }
         );
-        setSaved(response.data);
+        setSaved(response.data.saved);
       } catch (error) {
         console.log(error);
       }

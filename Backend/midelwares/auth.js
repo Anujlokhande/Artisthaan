@@ -6,7 +6,6 @@ const express = require("express");
 
 module.exports.authUser = async (req, res, next) => {
   const token = req.cookies.token || req.headers.authorization?.split(" ")[1];
-  console.log(token);
 
   if (!token) {
     return res.status(401).json({ message: "Unauthorized 1" });
@@ -76,13 +75,19 @@ module.exports.authArtist = async (req, res, next) => {
 module.exports.artOwner = async (req, res) => {
   try {
     const { id } = req.params;
+
     if (!id) {
       return res.status(400).json({ message: "Id is not Provided" });
     }
 
     const listing = await ListingModel.findById(id);
+
     if (!listing) {
       return res.status(404).json({ message: "Listing not found" });
+    }
+
+    if (!req.artist) {
+      return res.status(403).json({ message: "Not authorized" });
     }
 
     if (listing.owner.toString() === req.artist._id.toString()) {
