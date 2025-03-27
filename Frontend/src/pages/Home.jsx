@@ -65,8 +65,10 @@ const Home = () => {
               ))}
           </div>
         </div>
-        {/* footer  */}
-        <div></div>
+
+        <footer className="py-8 text-center text-gray-600">
+          <p>© 2024 ArtistHaan. All rights reserved.</p>
+        </footer>
       </div>
     </>
   );
