@@ -1,123 +1,123 @@
 const sampleData = [
   {
-    title: "warli painting",
+    title: "Chittara art",
     description:
-      "This Warli painting beautifully blends traditional tribal art with modern elements. Depicting the iconic iron lattice tower against a serene Kerala cityscape, it captures the harmony between nature and urban life.",
+      "This vibrant mural captures intricate, colorful depictions of Indian mythology and culture, reflecting the rich traditions of Chittara art from the Deccan region of India.",
     image:
-      "https://images.unsplash.com/photo-1621870536986-151d03e2e99a?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8d2FybGklMjBwYWludGluZ3xlbnwwfHwwfHx8MA%3D%3D",
-    location: "Kerala",
+      "https://i.pinimg.com/736x/46/1c/c2/461cc2f970e1a2fdbbccec30a894207f.jpg",
+    location: "Maharashtra",
     country: "India",
     owner: "67bdaf6aa5b152a0272b979f",
-    typeOfArt: "warli painting",
-    price: "299.99",
-  },
-  {
-    title: "chittara art",
-    description:
-      "This vibrant mural at Wat Phra Kaew captures intricate, colorful depictions of Thai mythology and history. The artwork showcases rich, detailed scenes painted with vivid colors, reflecting the spiritual and cultural significance of the Temple of the Emerald Buddha in Bangkok, Thailand.",
-    image:
-      "https://media.istockphoto.com/id/500535921/photo/murals-at-wat-phra-kaew.webp?a=1&b=1&s=612x612&w=0&k=20&c=iI9GIRwHv0qDull6Vn660irpa8fH-o0cgDAex0zQOLg=",
-    location: "maharastra",
-    country: "India",
-    owner: "67bdaf6aa5b152a0272b979f",
-    typeOfArt: "chittara art ",
-    price: "299.99",
-  },
-  {
-    title: "madhubani painting",
-    description:
-      "The image showcases a traditional Madhubani painting, characterized by intricate patterns, vibrant colors, and symbolic motifs depicting nature, mythology, and folklore. Originating from Bihar, India, this folk art is often created using natural dyes and handmade paper.",
-    image:
-      "https://images.unsplash.com/photo-1576504677634-06b2130bd1f3?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8fG1hZGh1YmFuaSUyMHBhaW50aW5nfGVufDB8fDB8fHww",
-    location: "himachal",
-    country: "India",
-    owner: "67bdaf6aa5b152a0272b979f",
-    typeOfArt: "madhubani ",
-    price: "299.99",
-  },
-  {
-    title: "kalighat art",
-    description:
-      "This temple detail showcases the exquisite craftsmanship and vibrant colors of traditional Asian architecture. The ornate carvings and intricate patterns highlight the spiritual and cultural significance of the structure, offering a glimpse into the rich heritage of the region.",
-    image:
-      "https://media.istockphoto.com/id/92034009/photo/temple-detail.webp?a=1&b=1&s=612x612&w=0&k=20&c=k7xG6w3hmQrdKefoHaWqZb6aQ8lwJ38Dqb-0UwuxkL0=",
-    location: "maharastra",
-    country: "India",
-    owner: "67bdaf6aa5b152a0272b979f",
-    typeOfArt: "kalighat art ",
-    price: "299.99",
-  },
-  {
-    title: "warli painting",
-    description:
-      "This Warli painting beautifully blends traditional tribal art with modern elements. Depicting the iconic iron lattice tower against a serene Kerala cityscape, it captures the harmony between nature and urban life.",
-    image:
-      "https://media.istockphoto.com/id/1335876835/photo/warli-tribal-painting-inside-sanjay-gandhi-national-park-mumbai-maharashtra-india.webp?a=1&b=1&s=612x612&w=0&k=20&c=F4stlf6ETGjgOa5Vl5zuAr8aRjoMfgCCR7rmYD2ztls=",
-    location: "Kerala",
-    country: "India",
-    owner: "67bdaf6aa5b152a0272b979f",
-    typeOfArt: "Warli painting",
-    price: "299.99",
+    typeOfArt: "Chittara art",
+    price: "150.00", // Adjusted price for the art
   },
   {
     title: "Madhubani painting",
     description:
-      "The image showcases a traditional Madhubani painting, characterized by intricate patterns, vibrant colors, and symbolic motifs depicting nature, mythology, and folklore. Originating from Bihar, India, this folk art is often created using natural dyes and handmade paper.",
+      "This traditional Madhubani painting features intricate patterns and vibrant colors, depicting nature, mythology, and folklore from Bihar, India.",
     image:
-      "https://media.istockphoto.com/id/1431309241/photo/geometric-ethnic-oriental-ikat-seamless-pattern-traditional-design-for-background-carpet.webp?a=1&b=1&s=612x612&w=0&k=20&c=wrgThRA9v9vMhC2h0mjKUfDeepdcDojZPltcowNwq0w=",
-    location: "himachal",
+      "https://i.pinimg.com/736x/7b/eb/98/7beb98629b2daad29623f3f10f6a96c6.jpg",
+    location: "Bihar",
     country: "India",
     owner: "67bdaf6aa5b152a0272b979f",
-    typeOfArt: "madhubani ",
-    price: "299.99",
+    typeOfArt: "Madhubani painting",
+    price: "180.00", // Adjusted price for the art
+  },
+  {
+    title: "Warli painting",
+    description:
+      "This Warli painting captures the harmony between nature and human life, depicting a serene village scene with traditional tribal motifs.",
+    image:
+      "https://i.pinimg.com/736x/f3/5d/8d/f35d8d0aeee33a7dd44221490de174b7.jpg",
+    location: "Maharashtra",
+    country: "India",
+    owner: "67bdaf6aa5b152a0272b979f",
+    typeOfArt: "Warli painting",
+    price: "220.00", // Adjusted price for the art
+  },
+  {
+    title: "Digital Art",
+    description:
+      "A modern digital art piece combining abstract forms and vibrant colors, inspired by the intersection of technology and creativity.",
+    image:
+      "https://i.pinimg.com/736x/32/92/f2/3292f2f930c3ad32f2445b7a6f98e2b3.jpg",
+    location: "Virtual",
+    country: "Global",
+    owner: "67bdaf6aa5b152a0272b979f",
+    typeOfArt: "Digital Art",
+    price: "300.00", // Adjusted price for the art
+  },
+  {
+    title: "Mixed Media",
+    description:
+      "This mixed media piece combines textures and layers of paint, paper, and digital manipulation, exploring the concept of identity and transformation.",
+    image:
+      "https://i.pinimg.com/736x/83/d0/d8/83d0d8b0305773734a58740f86220d41.jpg",
+    location: "New York",
+    country: "USA",
+    owner: "67bdaf6aa5b152a0272b979f",
+    typeOfArt: "Mixed Media",
+    price: "350.00", // Adjusted price for the art
   },
   {
     title: "Chittara art",
     description:
-      "This vibrant mural at Wat Phra Kaew captures intricate, colorful depictions of Thai mythology and history. The artwork showcases rich, detailed scenes painted with vivid colors, reflecting the spiritual and cultural significance of the Temple of the Emerald Buddha in Bangkok, Thailand.",
+      "This intricate piece of Chittara art showcases geometric patterns and symbols, often used for ceremonial purposes in rural Karnataka, India.",
     image:
-      "https://media.istockphoto.com/id/500535921/photo/murals-at-wat-phra-kaew.webp?a=1&b=1&s=612x612&w=0&k=20&c=iI9GIRwHv0qDull6Vn660irpa8fH-o0cgDAex0zQOLg=",
-    location: "maharastra",
+      "https://i.pinimg.com/736x/8f/b7/a8/8fb7a8b5ad521fe8ea63ab656011bce7.jpg",
+    location: "Karnataka",
     country: "India",
     owner: "67bdaf6aa5b152a0272b979f",
-    typeOfArt: "chittara art ",
-    price: "299.99",
+    typeOfArt: "Chittara art",
+    price: "160.00", // Adjusted price for the art
   },
   {
-    title: "kalighat art",
+    title: "Madhubani painting",
     description:
-      "This temple detail showcases the exquisite craftsmanship and vibrant colors of traditional Asian architecture. The ornate carvings and intricate patterns highlight the spiritual and cultural significance of the structure, offering a glimpse into the rich heritage of the region.",
+      "A mesmerizing Madhubani painting filled with detailed patterns of flora and fauna, typical of Bihar's traditional folk art.",
     image:
-      "https://media.istockphoto.com/id/680424406/photo/colorful-detail-decorated-entrance-dome-to-a-mosque-in-shiraz-iran.jpg?s=612x612&w=0&k=20&c=LMckbel6yAkVQ-3Rp4tSBiXeY_brQkgsCLLlkO3O1uE=",
-    location: "maharastra",
+      "https://i.pinimg.com/736x/4a/1b/34/4a1b34277f57d76ad39319bfa0c2f33c.jpg",
+    location: "Bihar",
     country: "India",
     owner: "67bdaf6aa5b152a0272b979f",
-    typeOfArt: "Kalighat art ",
-    price: "299.99",
+    typeOfArt: "Madhubani painting",
+    price: "190.00", // Adjusted price for the art
   },
   {
-    title: "chittara art",
+    title: "Warli painting",
     description:
-      "This vibrant mural at Wat Phra Kaew captures intricate, colorful depictions of Thai mythology and history. The artwork showcases rich, detailed scenes painted with vivid colors, reflecting the spiritual and cultural significance of the Temple of the Emerald Buddha in Bangkok, Thailand.",
+      "This Warli painting intricately showcases village life and nature, depicting scenes such as dancing, hunting, and animals in the tribal community.",
     image:
-      "https://media.istockphoto.com/id/486830842/photo/wooden-buddhist-carving.jpg?s=612x612&w=0&k=20&c=jSQmlrhMRsWC2Nv_SxvOBF8kmknuUdAI-EZT_63jShg=",
-    location: "maharastra",
+      "https://i.pinimg.com/736x/00/92/b9/0092b9aa3f50aa21104e091153ceeedb.jpg",
+    location: "Maharashtra",
     country: "India",
     owner: "67bdaf6aa5b152a0272b979f",
-    typeOfArt: "Chittara art ",
-    price: "299.99",
+    typeOfArt: "Warli painting",
+    price: "250.00", // Adjusted price for the art
   },
   {
-    title: "kalighat art",
+    title: "Digital Art",
     description:
-      "This temple detail showcases the exquisite craftsmanship and vibrant colors of traditional Asian architecture. The ornate carvings and intricate patterns highlight the spiritual and cultural significance of the structure, offering a glimpse into the rich heritage of the region.",
+      "An innovative digital artwork exploring the theme of artificial intelligence and its relationship with human emotions through vivid abstract visuals.",
     image:
-      "https://media.istockphoto.com/id/1300642861/photo/marble-surface-with-stone-inlay-in-famous-diwan-i-khas-palace-in-agra-fort-uttar-pradesh-india.jpg?s=612x612&w=0&k=20&c=7avkKMx8QiOvEjQ5KIeToGZMEpa9QaYAlNpLM0bYAAM=",
-    location: "maharastra",
-    country: "India",
+      "https://i.pinimg.com/736x/22/28/03/22280349e233c5c0773b895c997c2c04.jpg",
+    location: "Virtual",
+    country: "Global",
     owner: "67bdaf6aa5b152a0272b979f",
-    typeOfArt: "Kalighat art ",
-    price: "299.99",
+    typeOfArt: "Digital Art",
+    price: "320.00", // Adjusted price for the art
+  },
+  {
+    title: "Mixed Media",
+    description:
+      "A vibrant mixed media art piece that blends watercolor, ink, and collage, creating an abstract expression of human emotion and experience.",
+    image:
+      "https://i.pinimg.com/736x/c6/89/43/c68943c016607d84da0be3791f95f581.jpg",
+    location: "Los Angeles",
+    country: "USA",
+    owner: "67bdaf6aa5b152a0272b979f",
+    typeOfArt: "Mixed Media",
+    price: "370.00", // Adjusted price for the art
   },
 ];
 

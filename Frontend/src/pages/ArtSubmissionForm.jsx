@@ -138,9 +138,9 @@ const ArtSubmissionForm = () => {
             className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
           >
             <option value="">Select art type</option>
-            <option value="Painting">Painting</option>
-            <option value="Sculpture">Sculpture</option>
-            <option value="Photography">Photography</option>
+            <option value="Chittara art">Chittara art</option>
+            <option value="Warli painting">Warli painting</option>
+            <option value="Madhubani painting">Madhubani painting</option>
             <option value="Digital Art">Digital Art</option>
             <option value="Mixed Media">Mixed Media</option>
             <option value="Other">Other</option>

@@ -13,6 +13,8 @@ import ArtSubmissionForm from "./pages/ArtSubmissionForm";
 import ArtEditForm from "./pages/ArtEditForm";
 import Artistarts from "./pages/Artistarts";
 import Saved from "./pages/Saved";
+import Help from "./pages/Help";
+import About from "./pages/About";
 
 function App() {
   return (
@@ -37,6 +39,8 @@ function App() {
         <Route path="/art-edit" element={<ArtEditForm />} />
         <Route path="/artist-art" element={<Artistarts />} />
         <Route path="/saved" element={<Saved />} />
+        <Route path="/help" element={<Help />} />
+        <Route path="/about" element={<About />} />
       </Routes>
     </div>
   );
